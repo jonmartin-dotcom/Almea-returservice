@@ -92,9 +92,9 @@ export async function createReturnShipment(
     data: {
       type: "shipments",
       attributes: {
-        carrier_id: Number(env.webshipperCarrierId),
-        service_code: env.webshipperServiceCode,
         reference: params.referenceText,
+        service_code: env.webshipperServiceCode,
+        is_return: true,
         sender_address: {
           att_contact: params.fromAddress.name,
           address_1: params.fromAddress.street,
@@ -104,8 +104,7 @@ export async function createReturnShipment(
           phone: params.fromAddress.phone || undefined,
           email: params.fromAddress.email || undefined,
         },
-        recipient_address: {
-          att_contact: warehouse.name,
+        delivery_address: {
           company_name: warehouse.name,
           address_1: warehouse.street,
           zip: warehouse.postalCode,
@@ -114,12 +113,19 @@ export async function createReturnShipment(
         },
         packages: [
           {
-            weight: pkg.weightKg,
-            length: pkg.lengthCm,
-            width: pkg.widthCm,
-            height: pkg.heightCm,
+            weight: pkg.weightKg * 1000,
+            weight_unit: "g",
+            dimensions: {
+              length: pkg.lengthCm,
+              width: pkg.widthCm,
+              height: pkg.heightCm,
+              unit: "cm",
+            },
           },
         ],
+      },
+      relationships: {
+        carrier: { data: { id: env.webshipperCarrierId, type: "carriers" } },
       },
     },
   };
