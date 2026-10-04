@@ -92,7 +92,6 @@ export async function createReturnShipment(
     data: {
       type: "shipments",
       attributes: {
-        direction: "return",
         carrier_id: Number(env.webshipperCarrierId),
         carrier_product_code: env.webshipperServiceCode,
         reference: params.referenceText,
