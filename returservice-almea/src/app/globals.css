@@ -1,0 +1,40 @@
+:root {
+  --almea-navy: #0f2a52;
+  --almea-navy-dark: #0a1c38;
+  --almea-bg: #f5f6f8;
+  --almea-white: #ffffff;
+  --almea-text: #1f2430;
+  --almea-muted: #6b7280;
+  --almea-border: #e1e4ea;
+  --almea-error: #b3261e;
+  --almea-error-bg: #fdecea;
+  --almea-success-bg: #eaf5ec;
+  --almea-success-text: #1e5631;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--almea-bg);
+  color: var(--almea-text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--almea-navy);
+}
+
+button {
+  font-family: inherit;
+}
