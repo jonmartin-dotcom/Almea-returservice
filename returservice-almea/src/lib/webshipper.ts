@@ -93,7 +93,7 @@ export async function createReturnShipment(
       type: "shipments",
       attributes: {
         carrier_id: Number(env.webshipperCarrierId),
-        carrier_product_code: env.webshipperServiceCode,
+        service_code: env.webshipperServiceCode,
         reference: params.referenceText,
         sender_address: {
           att_contact: params.fromAddress.name,
